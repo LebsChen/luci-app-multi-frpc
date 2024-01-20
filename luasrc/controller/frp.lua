@@ -3,6 +3,8 @@ local uci=require"luci.model.uci".cursor()
 local fs = require "nixio.fs"
 
 function index()
+	entry({"admin", "services", "frp"}).dependent = true
+	entry({"admin", "services", "frp"}).acl_depends = { "luci-app-frpc" }
 	if not nixio.fs.access("/etc/config/frp") then
 		return
 	end
