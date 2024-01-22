@@ -8,7 +8,6 @@ function index()
 	if not nixio.fs.access("/etc/config/frp") then
 		return
 	end
-
 	entry({"admin", "services", "frp"}, alias("admin", "services", "frp", "base"), _("Multi Frpc"), 100).dependent = true
 	entry({"admin", "services", "frp", "base"}, cbi("frp/basic"), _("Frp Setting"), 1).leaf = true
 	entry({"admin", "services", "frp", "service_log"}, cbi("frp/log"), _("Plugin Log"), 2).leaf = true
